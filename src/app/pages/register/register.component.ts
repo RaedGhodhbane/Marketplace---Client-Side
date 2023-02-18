@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   RegisterForm!: FormGroup;
-  error: string ='';
+  error: string = '';
 
-  constructor(private authService: AuthenticationService, private router: Router, private fb : FormBuilder) { }
+  constructor(private authService: AuthenticationService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.RegisterForm = this.fb.group({
@@ -30,13 +30,16 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  register(){
-    this.authService.register(this.RegisterForm.value).then(data =>{
-      this.router.navigate(['/']);
+  register() {
+
+    this.authService.register({ user: this.RegisterForm.value } ).then(data => {
+      console.log(data);
+    this.router.navigate(['login']);
     }).
-    catch(err =>{
-        this.error =" email already exist";
-    })
+      catch(err => {
+        console.log(err, 'error')
+        this.error = " email already exist";
+      })
   }
 
 }

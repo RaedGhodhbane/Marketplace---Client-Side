@@ -1,49 +1,101 @@
 <ul class="breadcrumb">
-  <li><a href="#"><i class="fa fa-home"></i></a></li>
-  <li><a href="#">Account</a></li>
-  <li><a href="#">My Account</a></li>
+  <li>
+    <a href="#"><i class="fa fa-home"></i></a>
+  </li>
+  <li><a href="login">Account</a></li>
+  <li><a href="profile">My Account</a></li>
 </ul>
 
 <div class="row">
   <!--Middle Part Start-->
   <div class="col-sm-9" id="content">
     <h2 class="title">My Account</h2>
-    <p class="lead">Hello, <strong>Jhone Cary!</strong> - To update your account information.</p>
+    <p class="lead">
+      Hello, <strong>Jhone Cary!</strong> - To update your account information.
+    </p>
 
-      <div class="row">
-        <form [formGroup]="ProfileForm" (ngSubmit)="save()">
+    <div class="row">
+      <form [formGroup]="ProfileForm" (ngSubmit)="save()">
         <div class="col-sm-6">
           <fieldset id="personal-details">
-            <img *ngIf="!user.photo" src="../../../../assets/image/demo/about/ourmember02.png" alt="" width="100">
-            <img *ngIf="user.photo" src="{{user.photo}}" alt="" width="100">
-            <input type="file" class="form-control" (change)="upload($event)" name="photo">
+            <img
+              *ngIf="!user.photo"
+              src="../../../../assets/image/demo/about/ourmember02.png"
+              alt=""
+              width="100"
+            />
+            <img *ngIf="user.photo" src="{{ user.photo }}" alt="" width="100" />
+            <input
+              type="file"
+              class="form-control"
+              (change)="upload($event)"
+              name="photo"
+            />
             <legend>Personal Details</legend>
             <div class="form-group required">
               <label for="input-firstname" class="control-label">Nom</label>
-              <input type="text" class="form-control" formControlName="nom" id="input-firstname" placeholder="First Name" value="" name="firstname">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="nom"
+                id="input-firstname"
+                placeholder="First Name"
+                value=""
+                name="firstname"
+              />
             </div>
             <div class="form-group required">
               <label for="input-lastname" class="control-label">Prenom</label>
-              <input type="text" class="form-control" formControlName="prenom" id="input-lastname" placeholder="Last Name" value="" name="lastname">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="prenom"
+                id="input-lastname"
+                placeholder="Last Name"
+                value=""
+                name="lastname"
+              />
             </div>
             <div class="form-group required">
               <label for="input-email" class="control-label">E-Mail</label>
-              {{user.email}}
+              {{ user.email }}
             </div>
             <div class="form-group required">
-              <label for="input-telephone" class="control-label">Telephone</label>
-              <input type="tel" class="form-control" formControlName="telephone" id="input-telephone" placeholder="Telephone" value="" name="telephone">
+              <label for="input-telephone" class="control-label"
+                >Telephone</label
+              >
+              <input
+                type="tel"
+                class="form-control"
+                formControlName="telephone"
+                id="input-telephone"
+                placeholder="Telephone"
+                value=""
+                name="telephone"
+              />
             </div>
             <div class="form-group">
               <label for="input-fax" class="control-label">Adresse</label>
-              <input type="text" class="form-control" formControlName="adresse" id="input-fax" placeholder="Fax" value="" name="fax">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="adresse"
+                id="input-fax"
+                placeholder="Fax"
+                value=""
+                name="fax"
+              />
             </div>
           </fieldset>
-          <br>
+          <br />
         </div>
         <div class="buttons clearfix">
           <div class="pull-right">
-            <input type="submit" class="btn btn-md btn-primary" value="Save Changes">
+            <input
+              type="submit"
+              class="btn btn-md btn-primary"
+              value="Save Changes"
+            />
           </div>
         </div>
       </form>
@@ -52,28 +104,63 @@
           <fieldset>
             <legend>Change Password</legend>
             <div class="form-group required">
-              <label for="input-password" class="control-label">Old Password</label>
-              <input type="password" class="form-control" id="input-password" placeholder="Old Password" value="" name="old-password">
+              <label for="input-password" class="control-label"
+                >Old Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="input-password"
+                placeholder="Old Password"
+                value=""
+                name="old-password"
+              />
             </div>
             <div class="form-group required">
-              <label for="input-password" class="control-label">New Password</label>
-              <input type="password" class="form-control" id="input-password" placeholder="New Password" value="" name="new-password">
+              <label for="input-password" class="control-label"
+                >New Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="input-password"
+                placeholder="New Password"
+                value=""
+                name="new-password"
+              />
             </div>
             <div class="form-group required">
-              <label for="input-confirm" class="control-label">New Password Confirm</label>
-              <input type="password" class="form-control" id="input-confirm" placeholder="New Password Confirm" value="" name="new-confirm">
+              <label for="input-confirm" class="control-label"
+                >New Password Confirm</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="input-confirm"
+                placeholder="New Password Confirm"
+                value=""
+                name="new-confirm"
+              />
             </div>
           </fieldset>
           <fieldset>
             <legend>Newsletter</legend>
             <div class="form-group">
-              <label class="col-md-2 col-sm-3 col-xs-3 control-label">Subscribe</label>
+              <label class="col-md-2 col-sm-3 col-xs-3 control-label"
+                >Subscribe</label
+              >
               <div class="col-md-10 col-sm-9 col-xs-9">
                 <label class="radio-inline">
-                  <input type="radio" value="1" name="newsletter"> Yes
+                  <input type="radio" value="1" name="newsletter" /> Yes
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" checked="checked" value="0" name="newsletter"> No
+                  <input
+                    type="radio"
+                    checked="checked"
+                    value="0"
+                    name="newsletter"
+                  />
+                  No
                 </label>
               </div>
             </div>
@@ -81,15 +168,15 @@
         </div>
         <div class="buttons clearfix">
           <div class="pull-right">
-            <input type="submit" class="btn btn-md btn-primary" value="Save Changes">
+            <input
+              type="submit"
+              class="btn btn-md btn-primary"
+              value="Save Changes"
+            />
           </div>
         </div>
       </form>
-      </div>
-
-
-
-
+    </div>
   </div>
   <!--Middle Part End-->
   <!--Right Part Start -->
@@ -97,14 +184,10 @@
     <h2 class="subtitle">Account</h2>
     <div class="list-group">
       <ul class="list-item">
-
-        <li><a href="/profile">My Account</a>
-        </li>
-        <li><a href="/profile/favoris">Favoris</a>
-        </li>
-        <li><a href="/profile/order-history">Order History</a>
-        </li>
-        </ul>
+        <li><a href="/profile">My Account</a></li>
+        <li><a href="/profile/favoris">Favoris</a></li>
+        <li><a href="/profile/order-history">Order History</a></li>
+      </ul>
     </div>
   </aside>
   <!--Right Part End -->

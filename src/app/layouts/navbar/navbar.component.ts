@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CategorieService } from '../../core/services/categorie.service';
 
@@ -7,21 +8,21 @@ import { CategorieService } from '../../core/services/categorie.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  categories: any[]=[];
+  categories: any[] = [];
 
-  searchText: string='';
-  category:string='';
+  searchText: string = '';
+  category: string = 'all';
 
-  constructor(private service: CategorieService) { }
+  constructor(private service: CategorieService, private router: Router) { }
 
   ngOnInit(): void {
     this.getCategories();
   }
 
-  getCategories(){
-    this.service.getCategories().subscribe(data =>{
+  getCategories() {
+    this.service.getCategories().subscribe(data => {
       // console.log(data)
-      this.categories = data.map(cat=>{
+      this.categories = data.map(cat => {
         // console.log(fav);
         return {
 
@@ -35,6 +36,10 @@ export class NavbarComponent implements OnInit {
     })
   }
 
-  search(){}
+  search() {
+    this.router.navigate(['/recherche'], {
+      queryParams: { searchText: this.searchText, category: this.category }
+    })
+  }
 
 }

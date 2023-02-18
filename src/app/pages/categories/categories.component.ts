@@ -9,23 +9,24 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CategoriesComponent implements OnInit {
 
-  articles: any[]=[];
+  articles: any[] = [];
   id_categorie!: string;
 
-  constructor(private service: ArticleService, private router: Router, private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    this.route.params.subscribe(params =>
-      {this.id_categorie = params['id']}
-      )
+  constructor(private service: ArticleService, private router: Router, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      this.id_categorie = params['id'];
+      this.getArticle(this.id_categorie);
+    }
+    )
     console.log(this.id_categorie);
-    this.getArticle(this.id_categorie);
   }
 
-  getArticle(id:string){
-    this.service.getArticlesByCategory(id).subscribe(data =>{
+  ngOnInit(): void { }
+
+  getArticle(id: string) {
+    this.service.getArticlesByCategory(id).subscribe(data => {
       // console.log(data)
-      this.articles = data.map(cat=>{
+      this.articles = data.map(cat => {
         // console.log(fav);
         return {
 

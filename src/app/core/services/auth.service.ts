@@ -10,58 +10,58 @@ export class AuthenticationService {
 
     constructor(
         public afAuth: AngularFireAuth,
-        private router : Router,
+        private router: Router,
         private db: AngularFirestore
         // public http: HttpClient
     ) {
-        afAuth.authState.subscribe(user =>{
-            if(user){
+        afAuth.authState.subscribe(user => {
+            if (user) {
                 localStorage.setItem('user', JSON.stringify(user))
                 // console.log(JSON.stringify(user)!)
                 // console.log(user);
                 // localStorage.setItem('nom', 'ahmed')
             }
             else {
-              localStorage.removeItem('user');
+                localStorage.removeItem('user');
             }
         })
     }
 
     get isLoggedIn(): boolean {
-      // const a=5;
-      // console.log("a")
-      // const nom = localStorage.getItem('nom');
-      const user = JSON.parse(localStorage.getItem('user')!);
-      console.log(localStorage.setItem('user', JSON.stringify(user)))
-      console.log(user);
-      if(user)
-        return true
-      else
-        return false
-      // return user !== 'null' ? true : false;
+        // const a=5;
+        // console.log("a")
+        // const nom = localStorage.getItem('nom');
+        const user = JSON.parse(localStorage.getItem('user')!);
+        console.log(localStorage.setItem('user', JSON.stringify(user)))
+        console.log(user);
+        if (user)
+            return true
+        else
+            return false
+        // return user !== 'null' ? true : false;
     }
 
 
     login(user: any) {
-        return this.afAuth.signInWithEmailAndPassword(user.email, user.password).then((result) =>{
+        return this.afAuth.signInWithEmailAndPassword(user.email, user.password).then((result) => {
             this.setUser(result.user?.uid)
         })
     }
 
-    setUser(uid: any){
+    setUser(uid: any) {
         console.log(uid);
-        return this.db.collection('users').doc(uid).get().subscribe((doc)=>{
+        return this.db.collection('users').doc(uid).get().subscribe((doc) => {
             console.log(doc.data());
             // let user:any;
             // user = doc.data();
             // user.id = uid;
-            localStorage.setItem('userInfo',JSON.stringify(doc.data()))
+            localStorage.setItem('userInfo', JSON.stringify(doc.data()))
         });
 
     }
 
 
-    logout(){
+    logout() {
         return this.afAuth.signOut().then(() => {
             localStorage.removeItem('user');
             localStorage.removeItem('userInfo');
@@ -71,26 +71,28 @@ export class AuthenticationService {
     }
 
 
-    resetPassword(email: string){
+    resetPassword(email: string) {
         console.log(email)
         return this.afAuth.sendPasswordResetEmail(email);
     }
 
 
-    changePassword(token : string, newpassword: string){
-        return this.afAuth.confirmPasswordReset(token,newpassword)
+    changePassword(token: string, newpassword: string) {
+        return this.afAuth.confirmPasswordReset(token, newpassword)
     }
 
-    register(user:any){
-        return this.afAuth.createUserWithEmailAndPassword(user.email, user.password).then((result) =>{
-            this.createUser(user,result?.user?.uid)
+    register({ user }: { user: any; }) {
+        
+        return this.afAuth.createUserWithEmailAndPassword(user.email, user.password).then((result) => {
+            console.log(result, 'result')
+            this.createUser(user, result?.user?.uid)
         })
     }
 
-    createUser(data:any,uid:any){
-      let user:any;
-            user = data;
-            user.id = uid;
+    createUser(data: any, uid: any) {
+        let user: any;
+        user = data;
+        user.id = uid;
         this.db.collection('users').doc(uid).set(user);
     }
 

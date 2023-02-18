@@ -2,7 +2,7 @@
   <li>
     <a href="#"><i class="fa fa-home"></i></a>
   </li>
-  <li><a href="#">Smartphone & Tablets</a></li>
+  <li><a href="#">Jeux Vidéos & Consoles</a></li>
   <li><a href="#">Bint Beef</a></li>
 </ul>
 
@@ -17,7 +17,7 @@
               <img
                 itemprop="image"
                 class="product-image-zoom"
-                src="{{article.image}}"
+                src="{{ article.image }}"
                 title="Bint Beef"
                 alt="Bint Beef"
               />
@@ -27,14 +27,9 @@
               id="thumb-slider"
               class="owl-theme owl-loaded owl-drag full_slider"
             >
-              <a
-                data-index="0"
-                class="img thumbnail"
-
-                title="Bint Beef"
-              >
+              <a data-index="0" class="img thumbnail" title="Bint Beef">
                 <img
-                  src="{{article.image}}"
+                  src="{{ article.image }}"
                   title="Bint Beef"
                   alt="Bint Beef"
                 />
@@ -44,7 +39,7 @@
 
           <div class="content-product-right col-sm-6 col-xs-12">
             <div class="title-product">
-              <h1>{{article.nom}}</h1>
+              <h1>{{ article.nom }}</h1>
             </div>
             <!-- Review ---->
             <div class="box-review form-group">
@@ -90,12 +85,18 @@
                 itemscope=""
                 itemtype="http://data-vocabulary.org/Offer"
               >
-                <span class="price-new" itemprop="price">{{article.prix}} DT</span>
+                <span class="price-new" itemprop="price">{{
+                  article.prix
+                }}</span>
               </div>
               <div class="stock">
                 <span>Availability:</span>
-                <span class="status-stock" *ngIf="article.quantity > 5">In Stock</span>
-                <span class="status-stock" *ngIf="article.quantity <= 5">Out Stock</span>
+                <span class="status-stock" *ngIf="article.quantity > 5"
+                  >In Stock</span
+                >
+                <span class="status-stock" *ngIf="article.quantity <= 5"
+                  >Out Stock</span
+                >
               </div>
             </div>
 
@@ -115,7 +116,6 @@
 
             <div id="product">
               <h4>Available Options</h4>
-
 
               <div class="box-checkbox form-group required">
                 <label class="control-label">Checkbox</label>
@@ -275,7 +275,7 @@
         </ul>
         <div class="tab-content col-lg-10 col-sm-9 col-xs-12">
           <div id="tab-1" class="tab-pane fade active in">
-            <p>{{article.description}}</p>
+            <p>{{ article.description }}</p>
           </div>
           <div id="tab-review" class="tab-pane fade">
             <form>
@@ -408,7 +408,5 @@ Your Review</textarea
       </div>
     </div>
     <!-- //Product Tabs -->
-
-
   </div>
 </div>

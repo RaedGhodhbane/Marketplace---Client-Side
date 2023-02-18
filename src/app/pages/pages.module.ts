@@ -11,6 +11,7 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RechercheComponent } from './recherche/recherche.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SousCatComponent,
     ArticleDetailComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    RechercheComponent
   ],
   imports: [
     CommonModule,
